@@ -38,14 +38,14 @@
 %                            folder
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function [cuFolder,soFolder,exFolder] = definePath2SourceFolders(user)
+function [cuFolder,soFolder,exFolder, coFolfer, teFolder] = definePath2SourceFolders(user)
 
     %---------------------------------------------------------------------%
     %Initialize the path assignment
     
     %Restore the default path to MATLAB by removing any previously added
     %paths
-    restoredefaultpath;        
+    %restoredefaultpath;        
     %---------------------------------------------------------------------%
     
     
@@ -88,10 +88,10 @@ function [cuFolder,soFolder,exFolder] = definePath2SourceFolders(user)
     teFolder = fullfile(cuFolder,'..','5_tests');
     
     %Add paths for the folders
-    addpath(genpath(soFolder));          
-    addpath(genpath(coFolder));
-    addpath(genpath(exFolder));
-    addpath(genpath(teFolder));
+    %addpath(genpath(soFolder));          
+    %ddpath(genpath(coFolder));
+    %addpath(genpath(exFolder));
+    %addpath(genpath(teFolder));
     %---------------------------------------------------------------------%
     
 end
