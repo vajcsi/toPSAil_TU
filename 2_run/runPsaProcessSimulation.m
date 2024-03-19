@@ -138,8 +138,11 @@ function runPsaProcessSimulation(folderName,varargin)
     %Define a struct called params that contains simulation parameters
     [params,fullParams] = getSimParams(exampleFolder);  
     %---------------------------------------------------------------------%
-    
-    
+    X = lhssample;
+    fullParams(2:m) = fullParams(1);
+
+    parfor j = 1:m
+        fullParams(j).yFeC = [X(j,4) 1-X(j,4)];
     
     %---------------------------------------------------------------------%
     %Perform the simulation
@@ -241,7 +244,7 @@ function runPsaProcessSimulation(folderName,varargin)
     fprintf("*******************************************\n")  ;
     
     %Save simulation outputs into excel files
-    savePsaSimulationResults(fullParams,sol,sol.path.data);
+    savePsaSimulationResults(fullParams(j),sol,sol.path.data);
                 
     %Insert a conclusion for the command window output
     fprintf("\n*******************************************\n");
@@ -261,7 +264,7 @@ function runPsaProcessSimulation(folderName,varargin)
     %paths
     % restoredefaultpath;   
     %---------------------------------------------------------------------%
-            
+    end  
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
