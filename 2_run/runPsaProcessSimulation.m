@@ -91,7 +91,7 @@ function runPsaProcessSimulation(folderName,varargin)
     diary(nameDiary);
 
     %Turn on the diary
-    diary on
+    % diary on
     %---------------------------------------------------------------------%
     
     
@@ -222,7 +222,7 @@ function runPsaProcessSimulation(folderName,varargin)
     fprintf("*******************************************\n")  ;
     
     %Plot the simulation results
-    plotPsaSimulationResults(fullParams,sol);    
+    % plotPsaSimulationResults(fullParams,sol);    
     
     %Insert a conclusion for the command window output
     fprintf("\n*******************************************\n");
@@ -249,7 +249,7 @@ function runPsaProcessSimulation(folderName,varargin)
     fprintf("*******************************************\n")  ;        
     
     %Turn off the diary
-    diary off
+    % diary off
     %---------------------------------------------------------------------%                
     
    
