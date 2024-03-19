@@ -82,12 +82,12 @@ function params = getExcelParams(exFolder,nameFolder,nameExcelFile)
     end
     
     %Import the table containing the data    
-    params = readtable(locExcelFile,'Sheet','Data(Transposed)');  
-    tests  = readtable(locExcelFile,'Sheet','Data(Test)');  
+    inputTable = readtable(locExcelFile,'Format','auto');  
+    % tests  = readtable(locExcelFile);  
     
     %Construct a struct from the data
-    params = table2struct(params);
-    tests  = table2struct(tests);
+    params = table2struct(inputTable(1,:));
+    tests  = table2struct(inputTable(2,:));
     %---------------------------------------------------------------------%
     
     

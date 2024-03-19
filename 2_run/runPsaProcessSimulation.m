@@ -259,7 +259,7 @@ function runPsaProcessSimulation(folderName,varargin)
     
     %Restore the default path to MATLAB by removing any previously added
     %paths
-    restoredefaultpath;   
+    % restoredefaultpath;   
     %---------------------------------------------------------------------%
             
 end
