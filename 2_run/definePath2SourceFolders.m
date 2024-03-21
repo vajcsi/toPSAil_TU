@@ -38,7 +38,7 @@
 %                            folder
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function [cuFolder,soFolder,exFolder, coFolfer, teFolder] = definePath2SourceFolders(user)
+function [cuFolder,soFolder,exFolder, coFolder, teFolder] = definePath2SourceFolders(user)
 
     %---------------------------------------------------------------------%
     %Initialize the path assignment
