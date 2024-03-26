@@ -129,8 +129,8 @@ function runPsaProcessSimulation(folderName,varargin)
     %Call the function that imports all the relevant paths
     [~,~,exampleFolder] = definePath2SourceFolders(user);
     %---------------------------------------------------------------------%    
-    
-    
+    [~,~] = createMatFiles(exampleFolder);
+    [numCases] = createExtMatFiles(exampleFolder);
     
     %---------------------------------------------------------------------%
     %Initialize the simulation environment    
@@ -138,14 +138,9 @@ function runPsaProcessSimulation(folderName,varargin)
     %Define a struct called params that contains simulation parameters
     [params,fullParams] = getSimParams(exampleFolder);  
     %---------------------------------------------------------------------%
-    X = lhssample;
-    fullParams(2:m) = fullParams(1);
-
-    parfor j = 1:m
-        fullParams(j).yFeC = [X(j,4) 1-X(j,4)];
     
     %---------------------------------------------------------------------%
-    %Perform the simulation
+    %% Perform the simulation
     
     %If we have a single step,
     if params.nSteps == 1
@@ -244,7 +239,7 @@ function runPsaProcessSimulation(folderName,varargin)
     fprintf("*******************************************\n")  ;
     
     %Save simulation outputs into excel files
-    savePsaSimulationResults(fullParams(j),sol,sol.path.data);
+    savePsaSimulationResults(fullParams,sol,sol.path.data);
                 
     %Insert a conclusion for the command window output
     fprintf("\n*******************************************\n");
@@ -264,7 +259,7 @@ function runPsaProcessSimulation(folderName,varargin)
     %paths
     % restoredefaultpath;   
     %---------------------------------------------------------------------%
-    end  
+    % end  
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

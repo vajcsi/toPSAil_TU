@@ -45,7 +45,7 @@ function [cuFolder,soFolder,exFolder] = definePath2SourceFolders(user)
     
     %Restore the default path to MATLAB by removing any previously added
     %paths
-    restoredefaultpath;        
+    % restoredefaultpath;        
     %---------------------------------------------------------------------%
     
     

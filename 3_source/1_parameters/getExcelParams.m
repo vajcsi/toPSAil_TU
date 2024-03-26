@@ -82,12 +82,16 @@ function params = getExcelParams(exFolder,nameFolder,nameExcelFile)
     end
     
     %Import the table containing the data    
-    inputTable = readtable(locExcelFile,'Format','auto');  
-    % tests  = readtable(locExcelFile);  
+    % inputTable = readtable(locExcelFile,'Format','auto');  
+    % tests  = readtable(locExcelFile); 
     
     %Construct a struct from the data
-    params = table2struct(inputTable(1,:));
-    tests  = table2struct(inputTable(2,:));
+    % params = table2struct(inputTable(1,:));
+    % tests  = table2struct(inputTable(2,:));
+    %MAT-file version
+    load(locExcelFile);
+    params = simInput(1,:);
+    tests = simInput(end,:);
     %---------------------------------------------------------------------%
     
     

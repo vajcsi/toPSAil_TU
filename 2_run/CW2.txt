@@ -1,0 +1,28 @@
+
+*******************************************
+The simulator started the initialization... 
+*******************************************
+
+*******************************************
+The simulator has successfully initialized!
+*******************************************
+<a href="matlab: opentoline('C:\Users\vkalman\Documents\MATLAB\toPSAil_mod\toPSAil_TU\2_run\runPsaProcessSimulation.m',146,1)">146 </a>    if params.nSteps == 1
+if system_dependent('IsDebugMode')==1, dbquit; end
+runPsaProcessSimulation("case_study_1.1.e",2)
+
+*******************************************
+The simulator started the initialization... 
+*******************************************
+
+*******************************************
+The simulator has successfully initialized!
+*******************************************
+
+*******************************************
+Beginning a PSA cycle simulation...
+*******************************************
+<a href="matlab: opentoline('C:\Users\vkalman\Documents\MATLAB\toPSAil_mod\toPSAil_TU\3_source\4_rhs\1_volumetricFlowRates\1_adsorber_boundaries\1_linear_valves\calcVolFlowFeTa2ValTwo.m',98,1)">98  </a>    molFlowRat = funcVal(val2Con, ...
+if system_dependent('IsDebugMode')==1, dbquit; end
+runPsaProcessSimulation("case_study_1.1.e",2)
+<a href="matlab: opentoline('C:\Users\vkalman\Documents\MATLAB\toPSAil_mod\toPSAil_TU\2_run\runPsaProcessSimulation.m',70,1)">70  </a>    clc;        
+if system_dependent('IsDebugMode')==1, dbquit; end
