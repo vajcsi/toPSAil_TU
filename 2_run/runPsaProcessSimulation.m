@@ -130,7 +130,10 @@ function runPsaProcessSimulation(folderName,varargin)
     [~,~,exampleFolder] = definePath2SourceFolders(user);
     %---------------------------------------------------------------------%    
     [~,~] = createMatFiles(exampleFolder);
-    [numCases] = createExtMatFiles(exampleFolder);
+    if varargin == "multi"
+        Xi = lhsSample(numParams,sampleSize,lBounds,uBounds);
+        [numCases] = createExtMatFiles(exampleFolder,Xi);
+    end
     
     %---------------------------------------------------------------------%
     %Initialize the simulation environment    
