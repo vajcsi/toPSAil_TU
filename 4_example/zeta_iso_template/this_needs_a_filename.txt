@@ -1,0 +1,35 @@
+	Dataset name:	zeta_iso_cac
+	Author:		Viktor Kalman
+	Created:	2024-01-23
+	Last Modified:	2024-02-13
+
+	Description:
+		This simulation is provided to generate a dataset for ANN-model training for breakthrough prediction for binary mixtures of H2-CH4.
+
+		It contains the following datasets:
+			Xi - State vector of input variables
+				xi_1 = P_ad = Adsorption pressure (= feed pressure)
+				xi_2 = Cv_fe = Feed valve coefficient (resulting in different feed flowrates)
+				xi_3 = T_fe = Feed temperatue (= adsorption temperature in isothermal case)
+				xi_4 = y_H2,fe = Mol fraction of hydrogen in feed
+				xi_5 = h = Bed height (packed)
+				xi_6 = d_in = Inner diameter of bed
+			Sigma - State vector of output variables
+				sigmoid curve fitting parameters (5)
+				Ci(t) = (S1+(S2-S1)) / (1+exp(-(t-S3)/S4))^S5
+			T - Vector of notable time constants of the process
+				t_1 = t_bkt = Breakthrough time, where Ci/Ci0 = 0.05
+				t_2 = t_eq = Equilibration time, where Ci/Ci0 = 0.95
+				t_3 = t_st = Stoichiometric time, where t_st = t_bkt + A_uc/A_tot*(t_eq-t_bkt). For graphical explanation see "StTime.png"
+
+		The following variables remain constant for the whole dataset:
+			Isothermal operation = 1 (Yes)
+			Isotherm (Langmuir) parameters 	C_m,CH4 = 8.9512 mol/kg
+							b_CH4 = 0.079362 1/bar
+							C_m,H2 = 0.0000 mol/kg
+							b_H2 = 0.000000 1/bar
+			LDF mass transfer coefficients	k_LDF,CH4 = 0.587 1/s
+							k_LDF,H2 = 1.000 1/s
+		Due to isothermal operation, heat transfer and heat capacity coefficients are not required!
+
+		Additionally, a benchmark test was concluded to find a trade-off between simulation accuracy, cpu time and goodness of fit. Results are found in "Bencmark_Test.xlsx"

@@ -37,7 +37,7 @@
 %                             simulation parameters.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function [params,fullParams] = getSimParams(exampleFolder)        
+function [params,fullParams] = getSimParams(exampleFolder,caseNum)        
     
     %---------------------------------------------------------------------%    
     %Define known quantities
@@ -139,7 +139,7 @@ function [params,fullParams] = getSimParams(exampleFolder)
                 structCell{k} ...
                     = getExcelParams(exampleFolder, ...
                                        subFolderName{i}, ...
-                                       exFileNames{j});
+                                       exFileNames{j},caseNum);
                 %---------------------------------------------------------%
                 
                 

@@ -39,7 +39,7 @@
 %Outputs    : params       - a struct containing simulation parameters.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function params = getExcelParams(exFolder,nameFolder,nameExcelFile)
+function params = getExcelParams(exFolder,nameFolder,nameExcelFile,caseNum)
 
     %---------------------------------------------------------------------%    
     %Define known quantities
@@ -90,7 +90,7 @@ function params = getExcelParams(exFolder,nameFolder,nameExcelFile)
     % tests  = table2struct(inputTable(2,:));
     %MAT-file version
     load(locExcelFile);
-    params = simInput(1,:);
+    params = simInput(caseNum,:);
     tests = simInput(end,:);
     %---------------------------------------------------------------------%
     

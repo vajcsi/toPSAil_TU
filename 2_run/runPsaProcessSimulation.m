@@ -85,10 +85,10 @@ function runPsaProcessSimulation(folderName,varargin)
 %     disp(S);   
 
     %Get the diary name
-    nameDiary = strcat('CW',int2str(num),'.txt');
+    % nameDiary = strcat('CW',int2str(num),'.txt');
     
     %Save the Command Window ouputs
-    diary(nameDiary);
+    % diary(nameDiary);
 
     %Turn on the diary
     % diary on
@@ -130,7 +130,11 @@ function runPsaProcessSimulation(folderName,varargin)
     [~,~,exampleFolder] = definePath2SourceFolders(user);
     %---------------------------------------------------------------------%    
     [~,~] = createMatFiles(exampleFolder);
-    if varargin == "multi"
+    if nargin > 1 && ~additionalInputsEmpty
+        numParams = 4;
+        sampleSize = num;
+        lBounds = [25,9.0E-6,273,0.65];
+        uBounds = [60,1.5E-5,323,1];
         Xi = lhsSample(numParams,sampleSize,lBounds,uBounds);
         [numCases] = createExtMatFiles(exampleFolder,Xi);
     end
@@ -139,14 +143,16 @@ function runPsaProcessSimulation(folderName,varargin)
     %Initialize the simulation environment    
     
     %Define a struct called params that contains simulation parameters
-    [params,fullParams] = getSimParams(exampleFolder);  
+    for j = 1:num
+    [params(j),fullParams(j)] = getSimParams(exampleFolder,j);
+    end
     %---------------------------------------------------------------------%
     
     %---------------------------------------------------------------------%
     %% Perform the simulation
-    
+    parfor j = 1:num
     %If we have a single step,
-    if params.nSteps == 1
+    if params(j).nSteps == 1
         
         %We are doing a breakthrough simulation
         fprintf("\n*******************************************\n");
@@ -166,7 +172,7 @@ function runPsaProcessSimulation(folderName,varargin)
     [initime,time] = startFuncTimer();         
     
     %Call runPsaCycle.m function to simulate a given cycle
-    sol = runPsaCycle(params);        
+    sol = runPsaCycle(params(j));        
       
     %Print out the section header
     fprintf("\n*******************************************\n");
@@ -179,7 +185,7 @@ function runPsaProcessSimulation(folderName,varargin)
     fprintf("*******************************************\n");    
     
     %If we have a single step,
-    if params.nSteps == 1
+    if params(j).nSteps == 1
         
         %We are doing a breakthrough simulation
         fprintf("\n*******************************************\n");
@@ -196,7 +202,7 @@ function runPsaProcessSimulation(folderName,varargin)
         
     end      
     %---------------------------------------------------------------------%
-    
+    end
     
     
     %---------------------------------------------------------------------%
