@@ -1,4 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Project Sponsors :
 %U.S. Department of Energy 
 %American Institute of Chemical Engineers
@@ -172,7 +173,7 @@ function runPsaProcessSimulation(folderName,varargin)
     [initime,time] = startFuncTimer();         
     
     %Call runPsaCycle.m function to simulate a given cycle
-    sol = runPsaCycle(params(j));        
+    sol(j) = runPsaCycle(params(j));        
       
     %Print out the section header
     fprintf("\n*******************************************\n");
@@ -202,7 +203,7 @@ function runPsaProcessSimulation(folderName,varargin)
         
     end      
     %---------------------------------------------------------------------%
-    end
+    
     
     
     %---------------------------------------------------------------------%
@@ -210,31 +211,33 @@ function runPsaProcessSimulation(folderName,varargin)
             
     %Save the example folder location to save the simulation outputs to a
     %data structure called sol
-    sol.path.figs = fullfile(exampleFolder, ...
+    sol(j).path.figs = fullfile(exampleFolder, ...
                              '2_simulation_outputs', ...
-                             '1_figs');
-    sol.path.data = fullfile(exampleFolder, ...
+                             '1_figs',...
+                             int2str(j));
+    sol(j).path.data = fullfile(exampleFolder, ...
                              '2_simulation_outputs', ...
-                             '2_data');
+                             '2_data',...
+                             int2str(j));
     %---------------------------------------------------------------------%
     
     
     
     %---------------------------------------------------------------------%
-    %Perform post simulation data analysis        
-    
-    %Insert a preamlbe for the command window output
-    fprintf("\n*******************************************\n");
-    fprintf('Begin plotting simulation results... \n')        ;
-    fprintf("*******************************************\n")  ;
-    
-    %Plot the simulation results
-    % plotPsaSimulationResults(fullParams,sol);    
-    
-    %Insert a conclusion for the command window output
-    fprintf("\n*******************************************\n");
-    fprintf('The plotting has finished! \n')                  ; 
-    fprintf("*******************************************\n")  ;
+    % %Perform post simulation data analysis        
+    % 
+    % %Insert a preamlbe for the command window output
+    % fprintf("\n*******************************************\n");
+    % fprintf('Begin plotting simulation results... \n')        ;
+    % fprintf("*******************************************\n")  ;
+    % 
+    % %Plot the simulation results
+    % % plotPsaSimulationResults(fullParams,sol);    
+    % 
+    % %Insert a conclusion for the command window output
+    % fprintf("\n*******************************************\n");
+    % fprintf('The plotting has finished! \n')                  ; 
+    % fprintf("*******************************************\n")  ;
     %---------------------------------------------------------------------%
     
     
@@ -248,7 +251,7 @@ function runPsaProcessSimulation(folderName,varargin)
     fprintf("*******************************************\n")  ;
     
     %Save simulation outputs into excel files
-    savePsaSimulationResults(fullParams,sol,sol.path.data);
+    savePsaSimulationResults(fullParams,sol(j),sol(j).path.data);
                 
     %Insert a conclusion for the command window output
     fprintf("\n*******************************************\n");
@@ -258,7 +261,7 @@ function runPsaProcessSimulation(folderName,varargin)
     %Turn off the diary
     % diary off
     %---------------------------------------------------------------------%                
-    
+    end
    
    
     %---------------------------------------------------------------------%

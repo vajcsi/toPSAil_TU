@@ -27,7 +27,7 @@ saveLoc = exampleFolder + subFolderName;
 
 % Generate new inputs with LHS
 % xi = lhsSample(numParams,m,uBound,lBounds);
-m = length(xi);
+m = size(xi,1);
 
 for i = 1:numExFilesFolder
     exFileName = subFolder0(i);
@@ -61,7 +61,10 @@ for i = 1:numExFilesFolder
             % simInput(j).presExTa = ;
         elseif exFileName == "4.1_cycle_organization.mat"
             %Step durations are only changed in cyclic simulations
-            % simInput(j).durStep = ;
+            % ttOg = str2double(split(simInput(j).durStep, ' '));
+            % ttNew = ttOg;
+            % ttNew(1) = xi(j,??) % ?? is the t1 column from xi
+            % simInput(j).durStep = regexprep(num2str(ttNew'),'s\+',' ');
             oldVals = str2double(split(simInput(j).valFeedCol1,' '));
             newVals = oldVals;
             newVals(2) = xi(j,2);

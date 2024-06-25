@@ -194,7 +194,8 @@ function newStates = calcIsothermExtLang(params,states,nAds)
         %Unpack additional params
         teScaleFac   = params.teScaleFac  ;
         gConScaleFac = params.gConScaleFac;
-        bC           = params.bC          ; 
+        bC           = params.bC          ;
+        gasCons      = params.gasCons     ;
         dimLessQsatC = params.dimLessQsatC;
             
         %Calcualte the dimensionless bC and qSatC
