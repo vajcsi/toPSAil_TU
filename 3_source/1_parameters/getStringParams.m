@@ -184,6 +184,12 @@ function params = getStringParams(params)
                 indEqFlowDirPlusOne ...
                     = round(indEqFlowDirCurr+1,nSteps);
                 
+%%%Custom code modification to bypass error with 4 beds
+                if indEqFlowDirPlusOne == 13
+                    indEqFlowDirPlusOne = 1;
+                end
+%%%%
+
                 %Check if the next step is repressurization or high
                 %pressure feed
                 eqNextStepRepr ...

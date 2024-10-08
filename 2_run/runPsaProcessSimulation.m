@@ -134,10 +134,14 @@ function runPsaProcessSimulation(folderName,varargin)
     if nargin > 1 && ~additionalInputsEmpty
         numParams = 4;
         sampleSize = num;
+        if sampleSize == 1
+            
+        else
         lBounds = [25,9.0E-6,273,0.65];
         uBounds = [60,1.5E-5,323,1];
         Xi = lhsSample(numParams,sampleSize,lBounds,uBounds);
         [numCases] = createExtMatFiles(exampleFolder,Xi);
+        end
     end
     
     %---------------------------------------------------------------------%
